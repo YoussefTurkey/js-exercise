@@ -1,29 +1,44 @@
-// Catch all Elements
-let allImages = document.querySelectorAll('.carousel-img'),
-    preBtn = document.getElementById('preBtn'),
-    nextBtn = document.getElementById('nextBtn');
+const form = document.getElementById("gradeForm");
+const resultTable = document.getElementById("resultTable");
 
-// Loop on all Images and show just the active one
-const activeImg = (index) => {
-    // I will loop on all images and remove the active class
-    allImages.forEach( (img, i) => {
-        img.classList.remove('active')
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
 
-        // I will check if it is the chosen one, I will provide it the active class
-        if(i === index) img.classList.add('active')
-    })
-}
+  const name = document.getElementById("studentName").value.trim();
+  const g1 = parseFloat(document.getElementById("grade1").value);
+  const g2 = parseFloat(document.getElementById("grade2").value);
+  const g3 = parseFloat(document.getElementById("grade3").value);
 
-let current = 0
+  if (name === "" || isNaN(g1) || isNaN(g2) || isNaN(g3)) {
+    alert("يرجى إدخال جميع البيانات بشكل صحيح");
+    return;
+  }
 
-// Next-Btn
-nextBtn.addEventListener('click', () => {
-    current = (current + 1) % allImages.length
-    return activeImg(current)
-})
+  const total = g1 + g2 + g3;
+  const percentage = ((total / 300) * 100).toFixed(2);
+  let grade = "";
 
-// Prev-Btn
-preBtn.addEventListener('click', () => {
-    current = (current - 1 + allImages.length) % allImages.length
-    return activeImg(current)
-})
+  if (percentage >= 90) {
+    grade = "ممتاز ⭐";
+  } else if (percentage >= 80) {
+    grade = "جيد جدًا ✅";
+  } else if (percentage >= 70) {
+    grade = "جيد";
+  } else if (percentage >= 60) {
+    grade = "مقبول";
+  } else {
+    grade = "راسب ❌";
+  }
+
+  const row = `
+    <tr>
+      <td>${name}</td>
+      <td>${total}</td>
+      <td>${percentage}%</td>
+      <td>${grade}</td>
+    </tr>
+  `;
+
+  resultTable.innerHTML += row;
+  form.reset();
+});

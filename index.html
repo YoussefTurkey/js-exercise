@@ -1,58 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carousel App</title>
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
-    <!-- CSS File -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Carousel -->
-    <div class="carousel-container">
-      <div class="carousel">
-        <img
-          src="./images/A confident young man standing with arms crosse..._cleanup.png"
-          alt="carousel-01"
-          class="carousel-img active"
-        />
-        <img
-          src="./images/A confident young man with short dark hair and ..._cleanup.png"
-          alt="carousel-02"
-          class="carousel-img"
-        />
-        <img
-          src="./images/A man is sitting alone in a dark auditorium or ..._cleanup.png"
-          alt="carousel-03"
-          class="carousel-img"
-        />
-        <img
-          src="./images/A modern and highly organized developer workspa..._cleanup.png"
-          alt="carousel-04"
-          class="carousel-img"
-        />
-        <img
-          src="./images/A young man with short curly hair and a beard i..._cleanup.png"
-          alt="carousel-05"
-          class="carousel-img"
-        />
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grade Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-light">
 
-      <div class="controls">
-        <button id="preBtn">
-          <i class="bi bi-arrow-left-circle-fill"></i>
-        </button>
-        <button id="nextBtn">
-          <i class="bi bi-arrow-right-circle-fill"></i>
-        </button>
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">حاسبة درجات الطالب</h2>
+
+    <!-- Form -->
+    <form id="gradeForm" class="row g-3 shadow p-4 bg-white rounded">
+      <div class="col-md-3">
+        <input type="text" id="studentName" class="form-control" placeholder="اسم الطالب" required>
       </div>
+      <div class="col-md-2">
+        <input type="number" id="grade1" class="form-control" min="0" max="100" placeholder="درجة المادة 1" required>
+      </div>
+      <div class="col-md-2">
+        <input type="number" id="grade2" class="form-control" min="0" max="100" placeholder="درجة المادة 2" required>
+      </div>
+      <div class="col-md-2">
+        <input type="number" id="grade3" class="form-control" min="0" max="100" placeholder="درجة المادة 3" required>
+      </div>
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-primary w-100">احسب</button>
+      </div>
+    </form>
+
+    <!-- Table -->
+    <div class="mt-4">
+      <table class="table table-bordered text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>اسم الطالب</th>
+            <th>المجموع</th>
+            <th>النسبة المئوية</th>
+            <th>التقدير</th>
+          </tr>
+        </thead>
+        <tbody id="resultTable">
+          <!-- النتائج هتظهر هنا -->
+        </tbody>
+      </table>
     </div>
-    <!-- JS File -->
-    <script src="./script.js"></script>
-  </body>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
