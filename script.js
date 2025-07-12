@@ -1,44 +1,25 @@
-const form = document.getElementById("gradeForm");
-const resultTable = document.getElementById("resultTable");
+const counterDisplay = document.getElementById("counter");
+const increaseBtn = document.getElementById("increaseBtn");
+const decreaseBtn = document.getElementById("decreaseBtn");
+const resetBtn = document.getElementById("resetBtn");
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
+let count = 0;
 
-  const name = document.getElementById("studentName").value.trim();
-  const g1 = parseFloat(document.getElementById("grade1").value);
-  const g2 = parseFloat(document.getElementById("grade2").value);
-  const g3 = parseFloat(document.getElementById("grade3").value);
-
-  if (name === "" || isNaN(g1) || isNaN(g2) || isNaN(g3)) {
-    alert("يرجى إدخال جميع البيانات بشكل صحيح");
-    return;
-  }
-
-  const total = g1 + g2 + g3;
-  const percentage = ((total / 300) * 100).toFixed(2);
-  let grade = "";
-
-  if (percentage >= 90) {
-    grade = "ممتاز ⭐";
-  } else if (percentage >= 80) {
-    grade = "جيد جدًا ✅";
-  } else if (percentage >= 70) {
-    grade = "جيد";
-  } else if (percentage >= 60) {
-    grade = "مقبول";
-  } else {
-    grade = "راسب ❌";
-  }
-
-  const row = `
-    <tr>
-      <td>${name}</td>
-      <td>${total}</td>
-      <td>${percentage}%</td>
-      <td>${grade}</td>
-    </tr>
-  `;
-
-  resultTable.innerHTML += row;
-  form.reset();
+increaseBtn.addEventListener("click", () => {
+  count++;
+  updateCounter();
 });
+
+decreaseBtn.addEventListener("click", () => {
+  count--;
+  updateCounter();
+});
+
+resetBtn.addEventListener("click", () => {
+  count = 0;
+  updateCounter();
+});
+
+function updateCounter() {
+  counterDisplay.textContent = count;
+}
