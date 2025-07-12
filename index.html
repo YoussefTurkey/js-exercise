@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Currency Converter</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-light">
+
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">💱 محول العملات (جنيه → دولار/يورو)</h2>
+
+    <div class="card p-4 shadow-sm">
+      <div class="mb-3">
+        <input type="number" id="egpInput" class="form-control" placeholder="أدخل المبلغ بالجنيه المصري">
+      </div>
+      <button id="convertBtn" class="btn btn-primary w-100">حوّل</button>
+
+      <div class="mt-4">
+        <p>💵 بالدولار: <span id="usdResult" class="fw-bold text-success">0</span> USD</p>
+        <p>💶 باليورو: <span id="eurResult" class="fw-bold text-primary">0</span> EUR</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
